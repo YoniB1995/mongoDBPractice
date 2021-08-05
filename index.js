@@ -48,5 +48,10 @@ return mongodb.connect(`${CONNECTION_URL}dbSchool`,
     //     if (err) console.log(err);
     //     resFromGet.send(result);
     // })
+
+    studentCollection.deleteMany({first_name:"yossi"},(err,result)=>{
+        if (err) console.log(err);
+        resFromGet.send(result);
+    })
 })
 }
