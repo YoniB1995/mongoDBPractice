@@ -15,3 +15,6 @@ connectToDB().then(()=>console.log('MongoDB Connected'))
 .catch(error=> 
     console.error('Connection error',error.message)
 )
+
+const db = mongoose.connection;
+module.exports = db;
