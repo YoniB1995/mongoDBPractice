@@ -17,7 +17,7 @@ app.listen(PORT, ()=>{
 
 app.get('/', (req,res)=>{
     connectToDB(res)
-    
+
 })
 
 
@@ -26,13 +26,25 @@ return mongodb.connect(`${CONNECTION_URL}dbSchool`,
 (error,dbResult)=>{
     if (error) console.log(error);
     const studentCollection = dbResult.db('dbSchool').collection('students');
+
+    // =========================   Insert Document ========================= //
     const document = {"first_name":"yossi","last_name":"simha","age":29};
-    studentCollection.insertOne(document,(error,result)=>{
-        if (error) console.log(error);
-    resFromGet.send(result)
-        console.log(result);
-    });
+    // studentCollection.insertOne(document,(error,result)=>{
+    //     if (error) console.log(error);
+    // resFromGet.send(result)
+    //     console.log(result);
+    // });
+
+    // =========================   Find Document ========================= //
+
     // studentCollection.findOne({first_name:"dani"},(err,result)=>{
+    //     if (err) console.log(err);
+    //     resFromGet.send(result);
+    // })
+
+    // =========================   Delete Document ========================= //
+
+    // studentCollection.deleteOne({first_name:"dani"},(err,result)=>{
     //     if (err) console.log(err);
     //     resFromGet.send(result);
     // })
