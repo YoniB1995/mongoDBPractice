@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const PORT = process.env.PORT || 8080 ;
 const CONNECTION_URL= process.env.CONNECTION_URL ;
-
+const {getAllStudents} = require('../controllers/studentController')
 const connectToDB = ()=>{
 return mongoose.connect(CONNECTION_URL,
     {
@@ -11,7 +11,11 @@ return mongoose.connect(CONNECTION_URL,
     })
 }
 
-connectToDB().then(()=>console.log('MongoDB Connected'))
+connectToDB().then(()=>
+{
+    console.log('MongoDB Connected');
+    getAllStudents();
+})
 .catch(error=> 
     console.error('Connection error',error.message)
 )
