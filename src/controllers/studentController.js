@@ -58,13 +58,11 @@ const deleteStudent = async (req,res) => {
 
 const updateStudent = async (req,res) => {
     try{
-    const students = await studentModel.findByIdAndUpdate(
-    req.body.student.id,req.body.student,(err,result)=>{
+    await studentModel.findByIdAndUpdate(
+    req.params.id,req.body.student,(err,result)=>{
         if (err) console.log(err);
-        console.log(result)
-        res.json({message:"Success",data:result})
+        res.json({message:"Success",data:req.body.student})
     })
-    return students;
 }catch(error){
         res.json({message:"database problem",error:error})
     }
